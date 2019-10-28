@@ -3,7 +3,9 @@
 This project aims to help you connect an ESP8266 and a DHT11 humidity and temperature sensor to a dashboard in Grafana. 
 
 What you need:
+
 -Node MCU ESP 8266
+
 -DHT11 sensor
 -connection wires
 -Arduino IDE
