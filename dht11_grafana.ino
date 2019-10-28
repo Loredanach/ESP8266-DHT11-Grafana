@@ -9,8 +9,8 @@
 DHT dht(DHTPIN, DHTTYPE);
 
  
-const char* ssid     = "LANCOMBEIA";
-const char* password = "beialancom";
+const char* ssid     = "Wi-Fi_network_name";  //here you complete with your Wi-Fi network name
+const char* password = "Wi-Fi_network_pass";  //here you complete with your Wi-Fi network password
  
 WiFiClient WiFiclient;
 MQTTClient client;
@@ -28,7 +28,7 @@ void setup() {
  Serial.print("Connecting to ");
  Serial.println(ssid);
 
-WiFi.hostname("ESP_Loredana_C");
+WiFi.hostname("ESP_name); //ESP_name -> If you want your NodeMCU to have a specific name in the LAN network, put the name in -> ESP_name
 
 // WIFI CONNECTION
  
@@ -51,17 +51,17 @@ dht.begin();
 
  
  Serial.print("connecting to MQTT broker...");
- client.begin("mqtt.beia-telemetrie.ro", WiFiclient);
+ client.begin("mqtt_server_name", WiFiclient); //mqtt_server_name -> here you complete with you mqtt server name (where you want to upload your data)
  connect();
 }
  
 void connect() {
- while (!client.connect("odsi/rpi/loredana", "try", "try")) {
+ while (!client.connect("Grafana_topic", "try", "try")) { //Grafana_topic -> you will complete with the topic you want to retrieve the data
    Serial.print(".");
  }
  
  Serial.println("\nconnected!");
- client.subscribe("odsi/rpi/loredana");
+ client.subscribe("Grafana_topic");
 
 }
 
@@ -118,6 +118,6 @@ void loop(void)
    lastMillis = millis();
    String payload = "{" + value + "}";
    payload.toCharArray(data, (payload.length() + 1));
-   client.publish("odsi/rpi/loredana", data);
+   client.publish("Grafana_topic", data);
  }
 }
