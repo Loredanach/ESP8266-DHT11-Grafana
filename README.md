@@ -7,11 +7,17 @@ What you need:
 -Node MCU ESP 8266
 
 -DHT11 sensor
+
 -connection wires
+
 -Arduino IDE
+
 -mqtt-spy 
+
 -Grafana dashboard
+
 -PATIENCE
+
 
 1. You can download Arduino IDE from https://www.arduino.cc/en/main/software
 2. You can download mqtt-spy from https://github.com/eclipse/paho.mqtt-spy/wiki/Downloads
